@@ -71,4 +71,15 @@ public class EmployeeService implements EmployeeRepository {
         return existingEmployee;
     }
 
+    @Override
+    public void deleteEmployee(int employeeId){
+        Employee employee = employeeList.get(employeeId);
+        if (employee == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        } else{
+            employeeList.remove(employeeId);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        }
+    }
+
 }

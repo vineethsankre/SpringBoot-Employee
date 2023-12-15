@@ -26,10 +26,19 @@ public class EmployeeService implements EmployeeRepository {
     }
 
     @Override
-    public ArrayList<Employee> getAllEmployees(){
+    public ArrayList<Employee> getAllEmployees() {
         Collection<Employee> employeeCollection = employeeList.values();
         ArrayList<Employee> employees = new ArrayList<>(employeeCollection);
         return employees;
+    }
+
+    @Override
+    public Employee getEmployeeById(int employeeId){
+        Employee employee = employeeList.get(employeeId);
+        if (employee == null){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return employee;
     }
 
 }

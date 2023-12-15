@@ -12,6 +12,7 @@ public class Employee {
         this.email = email;
         this.department = department;
     }
+
     public int getEmployeeId() {
         return employeeId;
     }

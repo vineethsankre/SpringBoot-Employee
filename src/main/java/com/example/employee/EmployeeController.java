@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 import com.example.employee.*;
 
-@RestController;
+@RestController
 public class EmployeeController{
     EmployeeService employeeService = new EmployeeService();
 

@@ -19,8 +19,13 @@ public class EmployeeController {
     }
 
     @PostMapping("/employees")
-    public Employee addEmployee(@RequestBody Employee employee){
+    public Employee addEmployee(@RequestBody Employee employee) {
         return employeeService.addEmployee(employee);
+    }
+
+    @PutMapping("/employees/{employeeId}")
+    public Employee updateEmployee(@PathVariable("employeeId") int employeeId, @RequestBody Employee employee) {
+        return employeeService.updateEmployee(employeeId, employee);
     }
 
 }

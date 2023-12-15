@@ -52,4 +52,23 @@ public class EmployeeService implements EmployeeRepository {
 
     }
 
+    @Override
+    public Employee updateEmployee(int employeeId, Employee employee) {
+        Employee existingEmployee = employeeList.get(employeeId);
+        if (existingEmployee == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        if (employee.getEmployeeName() != null) {
+            existingEmployee.setEmployeeName(employee.getEmployeeName());
+        }
+        if (employee.getEmail() != null) {
+            existingEmployee.setEmail(employee.getEmail());
+        }
+        if (employee.getDepartment() != null) {
+            existingEmployee.setDepartment(employee.getDepartment());
+        }
+
+        return existingEmployee;
+    }
+
 }

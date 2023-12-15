@@ -14,6 +14,7 @@ import java.util.*;
 public class EmployeeService implements EmployeeRepository {
 
     private static HashMap<Integer, Employee> employeeList = new HashMap<>();
+    int uniqueEmployeeId = 7;
 
     public EmployeeService() {
         employeeList.put(1, new Employee(1, "John Doe", "johndoe@example.com", "Marketing"));
@@ -33,12 +34,22 @@ public class EmployeeService implements EmployeeRepository {
     }
 
     @Override
-    public Employee getEmployeeById(int employeeId){
+    public Employee getEmployeeById(int employeeId) {
         Employee employee = employeeList.get(employeeId);
-        if (employee == null){
+        if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return employee;
+    }
+
+    @Override
+    public Employee addEmployee(Employee employee) {
+        employee.setEmployeeId(uniqueEmployeeId);
+        employeeList.put(uniqueEmployeeId, employee);
+        uniqueEmployeeId += 1;
+
+        return employee;
+
     }
 
 }

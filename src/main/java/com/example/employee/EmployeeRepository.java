@@ -10,8 +10,4 @@ public interface EmployeeRepository {
 
     Employee addEmployee(Employee employee);
 
-    Employee updateEmployee(Employee employee);
-
-    void deleteEmployee(int employeeId);
-
 }
